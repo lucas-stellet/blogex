@@ -23,23 +23,21 @@ defmodule Blogex.User do
 
   def changeset(struct \\ %__MODULE__{}, params) do
     struct
-    %__MODULE__{}
     |> cast(params, @required_fields)
     |> validate_required(@required_fields)
-    |> validate_format(:email, ~r/@/, message: "invalid format")
+    |> validate_format(:email, ~r/@/, message: "email must be a valid email")
     |> validate_length(:password,
       min: 6,
-      message: "Senha deve ter no minimo 6 caracteres. "
+      message: "password length must be 6 characters long "
     )
     |> validate_length(:display_name,
       min: 8,
-      message: "Display_name deve ter no minimo 6 caracteres. "
+      message: "display_name length must be 6 characters long "
     )
     |> update_change(:email, &String.downcase(&1))
     |> update_change(:email, &String.trim(&1))
     |> update_change(:display_name, &String.trim(&1))
     |> put_password_hash()
-    |> unique_constraint(:email, message: "Usuario ja existe.")
   end
 
   defp put_password_hash(
