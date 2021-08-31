@@ -1,9 +1,13 @@
 defmodule Blogex do
-  @moduledoc """
-  Blogex keeps the contexts that define your domain
-  and business logic.
+  @moduledoc false
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
+  alias Blogex.Repo
+
+  @doc """
+  Handle the return of changeset creation.
   """
+
+  def validate_changeset(%Ecto.Changeset{valid?: true} = changeset), do: Repo.insert(changeset)
+
+  def validate_changeset(%Ecto.Changeset{valid?: false} = changeset), do: changeset
 end
