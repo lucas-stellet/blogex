@@ -21,8 +21,8 @@ defmodule Blogex.User do
     timestamps()
   end
 
-  @spec changeset(map) :: %Ecto.Changeset{}
-  def changeset(params) do
+  def changeset(struct \\ %__MODULE__{}, params) do
+    struct
     %__MODULE__{}
     |> cast(params, @required_fields)
     |> validate_required(@required_fields)
