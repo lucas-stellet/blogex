@@ -29,7 +29,7 @@ defmodule Blogex.User do
     |> validate_format(:email, ~r/@/, message: "invalid format")
     |> validate_length(:password,
       min: 6,
-      max: 8,
+      message: "Senha deve ter no minimo 6 caracteres. "
       message: "password has to be between 6 and 8 characters. "
     )
     |> update_change(:email, &String.downcase(&1))
