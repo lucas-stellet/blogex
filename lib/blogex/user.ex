@@ -30,7 +30,10 @@ defmodule Blogex.User do
     |> validate_length(:password,
       min: 6,
       message: "Senha deve ter no minimo 6 caracteres. "
-      message: "password has to be between 6 and 8 characters. "
+    )
+    |> validate_length(:display_name,
+      min: 8,
+      message: "Display_name deve ter no minimo 6 caracteres. "
     )
     |> update_change(:email, &String.downcase(&1))
     |> update_change(:email, &String.trim(&1))
