@@ -1,19 +1,16 @@
-defmodule UserTest do
+defmodule Blogex.UserTest do
   @moduledoc false
 
   use Blogex.DataCase, async: true
+
+  import Blogex.Factory
 
   alias Blogex.User
   alias Ecto.Changeset
 
   describe "changeset/1" do
     test "when all params are valid, returns a valid changeset" do
-      params = %{
-        email: "lucas@gmail.com",
-        display_name: "Lucas Stellet",
-        image: "https://link.com",
-        password: "123senha"
-      }
+      params = build(:user_params)
 
       response = User.changeset(params)
 
@@ -21,12 +18,7 @@ defmodule UserTest do
     end
 
     test "when updating a changeset, returns a valid changeset with the given changes" do
-      params = %{
-        email: "lucas@gmail.com",
-        display_name: "Lucas Stellet",
-        image: "https://link.com",
-        password: "123senha"
-      }
+      params = build(:user_params)
 
       update_params = %{
         display_name: "Lucas Stellet Pedreiro"
@@ -42,12 +34,7 @@ defmodule UserTest do
     end
 
     test "when there are some error, returns an invalid changeset" do
-      params = %{
-        email: "lucas@gmail.com",
-        display_name: "Lu",
-        image: "https://link.com",
-        password: "123s"
-      }
+      params = build(:user_params, %{display_name: "Lu", password: "123s"})
 
       response = User.changeset(params)
 
