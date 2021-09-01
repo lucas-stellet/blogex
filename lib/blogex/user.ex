@@ -38,6 +38,7 @@ defmodule Blogex.User do
     |> update_change(:email, &String.trim(&1))
     |> update_change(:display_name, &String.trim(&1))
     |> put_password_hash()
+    |> unique_constraint(:email)
   end
 
   defp put_password_hash(
