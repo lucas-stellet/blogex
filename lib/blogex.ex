@@ -1,9 +1,9 @@
 defmodule Blogex do
   @moduledoc false
 
-  alias Blogex.Repo
+  alias Blogex.Users.Create, as: UserCreate
 
-  @doc """
+  defdelegate create_user(params), to: UserCreate, as: :call
   Handle the return of changeset creation.
   """
 
