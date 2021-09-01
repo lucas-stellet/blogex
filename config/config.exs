@@ -24,6 +24,16 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+# Configures Guardian
+config :blogex, BlogexWeb.Auth.Guardian,
+  issuer: "blogex",
+  ttl: {30, :minutes},
+  secret_key: System.get_env("GUARDIAN_SECRET")
+
+config :blogex, BlogexWeb.Auth.Pipeline,
+  module: BlogexWeb.Auth.Guardian,
+  error_handler: BlogexWeb.Auth.ErrorHandler
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
