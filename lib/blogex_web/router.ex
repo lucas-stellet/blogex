@@ -16,7 +16,15 @@ defmodule BlogexWeb.Router do
   scope "/api", BlogexWeb do
     pipe_through :api
 
-    resources "/user", UsersController, except: [:new, :edit]
+    post "/user", UsersController, :create
+
+  end
+
+  scope "/api", BlogexWeb do
+
+    get "/user", UsersController, :index
+    get "/user/:id", UsersController, :show
+    delete "/user/me", UsersController, :delete
   end
 
   # Enables LiveDashboard only for development
