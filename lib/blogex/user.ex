@@ -25,7 +25,7 @@ defmodule Blogex.User do
     struct
     |> cast(params, @required_fields)
     |> validate_required(@required_fields, message: "is required")
-    |> validate_format(:email, ~r/@/, message: "email must be a valid email")
+    |> validate_format(:email, ~r/\S+@\S+\.\S+/, message: "must be a valid email")
     |> validate_length(:password,
       min: 6,
       message: "length must be 6 characters long "
