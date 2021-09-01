@@ -48,4 +48,16 @@ defmodule Blogex.User do
   end
 
   defp put_password_hash(changeset), do: changeset
+
+  defimpl Jason.Encoder, for: __MODULE__ do
+    def encode(struct, opts) do
+      %{
+        id: struct.id,
+        displayName: struct.display_name,
+        email: struct.email,
+        image: struct.image
+      }
+      |> Jason.Encode.map(opts)
+    end
+  end
 end
