@@ -18,6 +18,7 @@ defmodule BlogexWeb.Router do
 
     post "/user", UsersController, :create
 
+    post "/login", AuthController, :login
   end
 
   scope "/api", BlogexWeb do
