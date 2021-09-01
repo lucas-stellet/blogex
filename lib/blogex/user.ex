@@ -24,15 +24,15 @@ defmodule Blogex.User do
   def changeset(struct \\ %__MODULE__{}, params) do
     struct
     |> cast(params, @required_fields)
-    |> validate_required(@required_fields)
+    |> validate_required(@required_fields, message: "is required")
     |> validate_format(:email, ~r/@/, message: "email must be a valid email")
     |> validate_length(:password,
       min: 6,
-      message: "password length must be 6 characters long "
+      message: "length must be 6 characters long "
     )
     |> validate_length(:display_name,
       min: 8,
-      message: "display_name length must be 6 characters long "
+      message: "length must be 6 characters long "
     )
     |> update_change(:email, &String.downcase(&1))
     |> update_change(:email, &String.trim(&1))
