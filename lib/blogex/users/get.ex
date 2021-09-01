@@ -14,6 +14,13 @@ defmodule Blogex.Users.Get do
     end
   end
 
+  def by_email(email) do
+    case Repo.get_by(User, email: email) do
+      nil -> {:error, %{status: :not_found, result: "Usuario nao existe"}}
+      user -> {:ok, user}
+    end
+  end
+
   def all, do: Repo.all(User)
 
   defp get(id) do
