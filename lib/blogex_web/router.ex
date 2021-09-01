@@ -7,6 +7,8 @@ defmodule BlogexWeb.Router do
 
   scope "/api", BlogexWeb do
     pipe_through :api
+
+    resources "/user", UsersController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development
