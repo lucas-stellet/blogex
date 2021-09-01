@@ -30,4 +30,12 @@ defmodule BlogexWeb.UsersController do
     |> put_status(:ok)
     |> render("index.json", users: users)
   end
+
+  def delete(conn, %{"id" => id}) do
+    with {:ok, %User{} = _user} <- Blogex.delete_user(id) do
+      conn
+      |> put_status(:no_content)
+      |> text("")
+    end
+  end
 end

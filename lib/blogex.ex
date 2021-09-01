@@ -3,6 +3,7 @@ defmodule Blogex do
 
   alias Blogex.Users.Create, as: UserCreate
   alias Blogex.Users.Get, as: UserGet
+  alias Blogex.Users.Delete, as: UserDelete
 
   defdelegate create_user(params), to: UserCreate, as: :call
 
@@ -10,5 +11,5 @@ defmodule Blogex do
 
   defdelegate get_all_users(), to: UserGet, as: :all
 
-  def validate_changeset(%Ecto.Changeset{valid?: false} = changeset), do: changeset
+  defdelegate delete_user(id), to: UserDelete, as: :call
 end
