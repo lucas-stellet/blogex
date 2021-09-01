@@ -3,9 +3,9 @@ defmodule BlogexWeb.UsersView do
 
   alias Blogex.User
 
-  def render("create.json", %{user: %User{} = user}) do
+  def render("create.json", %{token: token}) do
     %{
-      token: user.id
+      token: token
     }
   end
 
