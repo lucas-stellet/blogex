@@ -21,6 +21,7 @@ defmodule BlogexWeb.Router do
   end
 
   scope "/api", BlogexWeb do
+    pipe_through [:api, :auth, :bodyguard]
 
     get "/user", UsersController, :index
     get "/user/:id", UsersController, :show
