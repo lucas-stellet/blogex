@@ -8,4 +8,8 @@ defmodule BlogexWeb.UsersView do
       token: user.id
     }
   end
+
+  def render("show.json", %{user: %User{} = user}), do: user
+
+  def render("index.json", %{users: users}), do: users
 end
