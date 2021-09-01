@@ -9,7 +9,13 @@ defmodule BlogexWeb.ErrorView do
     %{errors: %{detail: Phoenix.Controller.status_message_from_template(template)}}
   end
 
-  def render("error.json", %{result: %Changeset{errors: [email: _]} = _changeset}) do
+  def render("error.json", %{
+        result: %Changeset{
+          errors: [
+            email: {"has already been taken", _}
+          ]
+        }
+      }) do
     %{message: "Usuario ja registrado."}
   end
 
@@ -24,8 +30,8 @@ defmodule BlogexWeb.ErrorView do
   end
 
   defp reduce_ecto_changeset_errors(errors) do
-    for {_key, [value]} <- errors do
-      String.trim(value)
+    for {key, [value]} <- errors do
+      Atom.to_string(key) <> " " <> String.trim(value)
     end
   end
 
