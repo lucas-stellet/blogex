@@ -5,6 +5,14 @@ defmodule BlogexWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug BlogexWeb.Auth.Pipeline
+  end
+
+  pipeline :bodyguard do
+    plug BlogexWeb.BodyGuard
+  end
+
   scope "/api", BlogexWeb do
     pipe_through :api
 
