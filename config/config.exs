@@ -28,7 +28,11 @@ config :logger, :console,
 config :blogex, BlogexWeb.Auth.Guardian,
   issuer: "blogex",
   ttl: {30, :minutes},
-  secret_key: System.get_env("GUARDIAN_SECRET")
+  secret_key:
+    System.get_env(
+      "GUARDIAN_SECRET",
+      "UaE9J9jqkLcBcV46r+WihLKwNea5HLz+X2eo3ij4CYBuelnEQo3eXi1QEIp4PzC2"
+    )
 
 config :blogex, BlogexWeb.Auth.Pipeline,
   module: BlogexWeb.Auth.Guardian,
