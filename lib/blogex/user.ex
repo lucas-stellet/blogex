@@ -7,6 +7,8 @@ defmodule Blogex.User do
 
   import Ecto.Changeset
 
+  alias Blogex.Post
+
   @primary_key {:id, :binary_id, autogenerate: true}
 
   @required_fields ~w(email display_name password image)a
@@ -17,6 +19,8 @@ defmodule Blogex.User do
     field :image, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+
+    has_many :posts, Post
 
     timestamps()
   end
