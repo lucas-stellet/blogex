@@ -27,6 +27,13 @@ defmodule BlogexWeb.Router do
     get "/user", UsersController, :index
     get "/user/:id", UsersController, :show
     delete "/user/me", UsersController, :delete
+
+    post "/post", PostsController, :create
+    get "/post", PostsController, :index
+    get "/post/search", PostsController, :search
+    get "/post/:id", PostsController, :show
+    put "/post/:id", PostsController, :update
+    delete "/post/:id", PostsController, :delete
   end
 
   # Enables LiveDashboard only for development
