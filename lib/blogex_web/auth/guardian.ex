@@ -23,7 +23,7 @@ defmodule BlogexWeb.Auth.Guardian do
   def authenticate(%{"email" => email, "password" => password}) do
     case Get.by_email(email) do
       {:error, _} ->
-        {:error, "Favor verificar as suas credenciais"}
+        {:error, %{status: :bad_request, result: "Favor verificar as suas credenciais"}}
 
       {:ok, user} ->
         validate_password(user, password)
