@@ -16,6 +16,8 @@ defmodule BlogexWeb.Router do
   scope "/api", BlogexWeb do
     pipe_through :api
 
+    get "/", WelcomeController, :index
+
     post "/user", UsersController, :create
 
     post "/login", AuthController, :login
