@@ -18,7 +18,6 @@ docker-compose up
 
 ```
 blogex    | [info] Access BlogexWeb.Endpoint at http://localhost:4000
-blogex    | [info] POST /api/account/login
 ```
 
 Com esas informações em tela a sua aplicação estará funcionando e pronto para o acesso.
