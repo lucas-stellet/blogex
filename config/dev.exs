@@ -3,9 +3,9 @@ use Mix.Config
 # Configure your database
 config :blogex, Blogex.Repo,
   username: "postgres",
-  password: "pass123",
+  password: "postgres",
   database: "blogex_dev",
-  hostname: "localhost",
+  hostname: "db",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

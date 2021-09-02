@@ -4,7 +4,7 @@
 
 A API está disponível no endereço abaixo:
 
-[stonex.jaspion.xyz/api](http://stonex.jaspion.xyz/api)
+[blogex.jaspion.xyz/api](http://blogex.jaspion.xyz/api)
 
 ## Rodando localmente
 
