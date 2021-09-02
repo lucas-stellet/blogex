@@ -23,7 +23,7 @@ defmodule Blogex do
 
   defdelegate get_post_by_id(params), to: PostGet, as: :by_id
 
-  defdelegate update_post(params), to: PostUpdate, as: :call
+  defdelegate update_post(params, user_id), to: PostUpdate, as: :call
 
   defdelegate delete_post(params), to: PostDelete, as: :call
 
