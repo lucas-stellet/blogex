@@ -29,6 +29,8 @@ defmodule BlogexWeb.ErrorView do
     %{message: result}
   end
 
+  def render("error.json", _), do: ""
+
   defp reduce_ecto_changeset_errors(errors) do
     for {key, [value]} <- errors do
       Atom.to_string(key) <> " " <> String.trim(value)
