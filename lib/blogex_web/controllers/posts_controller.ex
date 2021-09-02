@@ -45,7 +45,8 @@ defmodule BlogexWeb.PostsController do
   end
 
   def update(conn, params) do
-    with {:ok, post} <- Blogex.update_post(params) do
+    with {:ok, %{id: user_id}} <- current_resource(conn),
+         {:ok, post} <- Blogex.update_post(params, user_id) do
       conn
       |> put_status(:ok)
       |> render("update.json", post: post)
