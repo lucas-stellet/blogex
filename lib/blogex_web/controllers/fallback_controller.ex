@@ -13,4 +13,11 @@ defmodule BlogexWeb.FallbackController do
     |> put_view(ErrorView)
     |> render("error.json", result: result)
   end
+
+  def call(conn, {:error, %{status: status}}) do
+    conn
+    |> put_status(status)
+    |> put_view(ErrorView)
+    |> render("error.json")
+  end
 end
