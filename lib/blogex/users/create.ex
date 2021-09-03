@@ -1,6 +1,6 @@
 defmodule Blogex.Users.Create do
   @moduledoc """
-  Public Blogex Users API
+  Blogex Users Create command
   """
 
   alias Blogex.{Repo, User}

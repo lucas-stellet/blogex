@@ -1,5 +1,7 @@
 defmodule Blogex.Users.Delete do
-  @moduledoc false
+  @moduledoc """
+  Blogex Users Delete command
+  """
 
   alias Blogex.{Repo, User}
   alias Ecto.UUID

@@ -1,7 +1,9 @@
 defmodule Blogex.Posts.Get do
-  @moduledoc false
+  @moduledoc """
+  Blogex Posts Get command
+  """
 
-  alias Blogex.{Repo, Post}
+  alias Blogex.{Post, Repo}
   alias Ecto.UUID
 
   import Ecto.Query, only: [from: 2]
@@ -19,10 +21,6 @@ defmodule Blogex.Posts.Get do
   def by_term(term) do
     query_search(term)
     |> Repo.all()
-  end
-
-  def by_user_id(id) do
-    Repo.get_by(Post, user_id: id)
   end
 
   def all do

@@ -1,5 +1,7 @@
 defmodule Blogex.Posts.Delete do
-  @moduledoc false
+  @moduledoc """
+  Blogex Posts Delete command
+  """
 
   alias Blogex.{Repo}
   alias Ecto.UUID
@@ -31,7 +33,7 @@ defmodule Blogex.Posts.Delete do
     end
   end
 
-  def validate_uuids?(uuids) do
+  defp validate_uuids?(uuids) do
     uuid_lists =
       for uuid <- uuids do
         case UUID.cast(uuid) do

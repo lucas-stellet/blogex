@@ -1,5 +1,7 @@
 defmodule Blogex.Users.Get do
-  @moduledoc false
+  @moduledoc """
+  Blogex Users Get command
+  """
 
   alias Blogex.{Repo, User}
   alias Ecto.UUID

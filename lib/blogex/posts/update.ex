@@ -17,8 +17,6 @@ defmodule Blogex.Posts.Update do
   end
 
   defp update(%{"id" => post_id} = params, user_id) do
-    IO.inspect(params)
-
     with {:ok, post} <- fetch_post(post_id),
          {:ok, _deletable_post} <- user_own_post(post, user_id) do
       update_post(create_changeset(post, params))
@@ -38,9 +36,6 @@ defmodule Blogex.Posts.Update do
   end
 
   defp user_own_post(%{user_id: post_user_id} = post, user_id) do
-    IO.inspect(post)
-    IO.inspect(user_id)
-
     cond do
       user_id == post_user_id ->
         {:ok, post}
@@ -57,7 +52,7 @@ defmodule Blogex.Posts.Update do
     end
   end
 
-  def validate_uuids?(uuids) do
+  defp validate_uuids?(uuids) do
     uuid_lists =
       for uuid <- uuids do
         case UUID.cast(uuid) do
